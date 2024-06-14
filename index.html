@@ -20,8 +20,8 @@
 
         #game-container {
             width: 100%;
-            max-width: 600px; /* To maintain a 9:16 aspect ratio */
-            height: 100%;   /* To maintain a 9:16 aspect ratio */
+            max-width: 360px; /* To maintain a 9:16 aspect ratio */
+            height: 640px;   /* To maintain a 9:16 aspect ratio */
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -108,7 +108,7 @@
         #nav-bar {
             display: flex;
             justify-content: space-around;
-            background-color: #fff; /* New background color */
+            background-color: #222222; /* New background color */
             padding: 10px 0;
             margin: 10px;
             border-radius: 10px; /* Adding border radius */
@@ -197,6 +197,16 @@
 .clickable-area:active {
     transform: scale(0.9);
 }
+#level-text {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#level-text p {
+    margin: 0px;
+}
 
 
     </style>
@@ -204,9 +214,9 @@
 <body>
     <div id="game-container">
         <div id="top-bar">
-            <div id="Ept">Earn per Tap<br><div id="earn-per-tap"></div></div>
-            <div id="lvl">Level<br><div id="level">1</div></div>
-            <div id="Epm">Earn per Minute<br><div id="earn-per-minute">180</div></div>
+            <div id="Ept" style="color: #aeaeae;">Earn per Tap<br><div id="earn-per-tap" style="color: #fff;"></div></div>
+            <div id="lvl" style="color: #aeaeae;">Level<br><div id="level" style="color: #fff;">1</div></div>
+            <div id="Epm" style="color: #aeaeae;">Earn per Minute<br><div id="earn-per-minute" style="color: #fff;">180</div></div>
         </div>
         <div id="game">
             <h1 id="carrot-count"><span id="carrot-number">0</span> <img src="crystal.png" alt="Carrot" id="carrot-icon" style="vertical-align: middle; width: 30px; height: 30px;"></h1>
@@ -216,6 +226,11 @@
         <div id="progsess">
             <div id="line">
             </div>
+        </div>
+        <div id="level-text">
+            <p id="mylevel"  style="color: #e7e7e7; width: -webkit-fill-available;">master</p>
+            <p style="color: #aeaeae; margin-right: 5px;">level </p>
+            <p style="color: #e7e7e7;" id="txt">1/10</p>
         </div>
         <div id="nav-bar">
             <button id="home-button">Home</button>
@@ -240,7 +255,7 @@
         const carrotsPerMinute = autoClickerRate * 60;
         let lastUpdateTime = Date.now();
         let level = 1;
-        const levelThresholds = [0, 100, 300, 600, 1000, 3000, 8000, 10000, 30000, 50000, 100000]; // Define level thresholds
+        const levelThresholds = [0, 5000, 25000, 100000, 1000000, 5000000, 10000000, 5000000, 100000000, 100000000]; // Define level thresholds
 
         const carrotNumberElement = document.getElementById('carrot-number');
         const levelElement = document.getElementById('level');
@@ -251,6 +266,11 @@
         const offlineCarrotsElement = document.getElementById('offline-carrots');
         const claimOfflineButton = document.getElementById('claim-offline');
         const ProgressLine = document.getElementById('line');
+        const NextLevel = document.getElementById('txt');
+        const MyLevel = document.getElementById('mylevel');
+        const levelTitles = ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Legend", "Mythical", "Godlike", "Ultimate"]; 
+        
+
 
         function updateCarrotCount() {
             carrotNumberElement.textContent = `${carrots}`;
@@ -268,7 +288,12 @@
             levelElement.textContent = `${level}`;
             earnPerTapElement.textContent = `${carrotsPerTap}`;
             earnPerMinuteElement.textContent = `${carrotsPerMinute}`;
+            NextLevel.textContent = `${level}` + '/10';
+            MyLevel.textContent = levelTitles[level - 1];
         }
+
+
+
 
         function earnCarrot() {
             carrots += carrotsPerTap;
@@ -379,6 +404,8 @@ function checkLevel() {
     levelElement.textContent = `${level}`;
     earnPerTapElement.textContent = `${carrotsPerTap}`;
     earnPerMinuteElement.textContent = `${carrotsPerMinute}`;
+    NextLevel.textContent = `${level}` + '/10';
+    MyLevel.textContent = levelTitles[level - 1];
     
     updateProgressLine(); // Call updateProgressLine after updating level
 }
@@ -394,6 +421,8 @@ function earnCarrot() {
     saveProgress();
     clickEffect(); // Call the click effect function
 }
+
+
 
 
 
