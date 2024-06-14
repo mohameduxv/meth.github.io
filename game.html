@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clicker Game</title>
+<style>
+  body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  #game-container {
+    margin-top: 50px;
+  }
+  #coin-counter {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  #dog {
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  #dog:active {
+    transform: scale(0.9);
+  }
+  .button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  #level-indicator {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div id="game-container">
+  <div id="coin-counter">Coins: <span id="coins">0</span></div>
+  <img id="dog" src="dog.png" alt="Dog">
+  <div class="button" onclick="tap()">Tap</div>
+  <div class="button" onclick="mine()">Mine</div>
+  <div class="button" onclick="friends()">Friends</div>
+  <div id="level-indicator">Level <span id="level">1</span>/10</div>
+</div>
+
+<script>
+let coins = 0;
+let level = 1;
+
+function tap() {
+  coins += level; // Increment coins by the current level
+  updateUI();
+}
+
+function mine() {
+  coins += 10 * level; // Increment coins by 10 times the current level
+  updateUI();
+}
+
+function friends() {
+  coins += 50 * level; // Increment coins by 50 times the current level
+  updateUI();
+}
+
+function updateUI() {
+  document.getElementById('coins').textContent = coins;
+  // Implement level up logic if needed
+}
+
+document.getElementById('dog').addEventListener('click', tap);
+</script>
+</body>
+</html>
