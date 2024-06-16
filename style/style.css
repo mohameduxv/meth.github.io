@@ -1,0 +1,5 @@
+body{
+    border: 6px solid #000000;
+    height: var(--tg-viewport-stable-height, 100vh);
+    margin: 0px;
+}
