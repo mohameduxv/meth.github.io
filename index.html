@@ -24,6 +24,25 @@
     </div>
         <button id="wallet"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
     </div>
+
+
+
+
+
+
+
+    <script>
+        // Wait for the Telegram Web App to initialize
+        Telegram.WebApp.onEvent('init', function() {
+            const user = Telegram.WebApp.initDataUnsafe.user;
+            if (user) {
+                document.getElementById('user').innerText = user.username || 'No Username';
+            }
+        });
+
+        // Trigger the initialization
+        Telegram.WebApp.ready();
+    </script>
     
 </body>
 </html>
