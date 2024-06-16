@@ -31,10 +31,12 @@
 
 
 
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         // Function to update username
         function updateUsername() {
             const user = Telegram.WebApp.initDataUnsafe.user;
+            console.log("User data:", user); // Debugging: log user data
             if (user) {
                 document.getElementById('user').innerText = user.username || 'No Username';
             } else {
@@ -43,7 +45,16 @@
         }
 
         // Ensure the Web App is ready before accessing user data
-        Telegram.WebApp.ready(updateUsername);
+        Telegram.WebApp.ready(() => {
+            console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
+            updateUsername();
+        });
+
+        // Additional event listener to ensure the script runs when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM fully loaded and parsed"); // Debugging: log when DOM is loaded
+            updateUsername();
+        });
     </script>
     
 </body>
