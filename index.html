@@ -59,6 +59,9 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        Telegram.WebApp.onEvent('viewportChanged', (height) => {
+            Telegram.WebApp.expand();
+        });
         // Function to update username
         function updateUsername() {
             const user = Telegram.WebApp.initDataUnsafe.user;
