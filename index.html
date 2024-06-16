@@ -25,12 +25,12 @@
     </div>
         <button id="wallet"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
     </div>
-    <!---nav-bar--->
-    <div id="nav-bar">
+    <!---top-bar--->
+    <div id="top-bar">
         <div id="balance">
             <p style="font-size: small; color: #969696;">Balance</p>
             <div id="item">
-            <img src="sources/coin.png" alt="icon">
+            <img src="sources/crystal.png" alt="icon">
             <p id="balance-text" style="color: cornflowerblue;">10000</p>
             
             </div>
@@ -43,8 +43,13 @@
             <p style="font-size: small; color: #969696;">Profit per hour</p>
             <div id="item">
             <p id="Profit-per-hour-text">+10000</p>
-            
             </div>
+        </div>
+    </div>
+    <!---Game--->
+    <div id="game">
+        <div id="game-container">
+            <img src="sources/coin.png" alt="click">
         </div>
     </div>
 
@@ -59,9 +64,6 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        Telegram.WebApp.onEvent('viewportChanged', (height) => {
-            Telegram.WebApp.expand();
-        });
         // Function to update username
         function updateUsername() {
             const user = Telegram.WebApp.initDataUnsafe.user;
@@ -76,7 +78,6 @@
         // Ensure the Web App is ready before accessing user data
         Telegram.WebApp.ready(() => {
             console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
-            Telegram.WebApp.expand();
             updateUsername();
         });
 
