@@ -73,6 +73,7 @@
         // Ensure the Web App is ready before accessing user data
         Telegram.WebApp.ready(() => {
             console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
+            Telegram.WebApp.expand();
             updateUsername();
         });
 
