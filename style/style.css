@@ -42,6 +42,7 @@ body {
     width: fit-content;
     padding: 10px 13px;
     color: aliceblue;
+    display: flex;
 }
 #wallet p {
     padding: 0px;
@@ -50,4 +51,7 @@ body {
     font-family: "Rubik", sans-serif;
     font-size: 15px;
     
+}
+#wallet img {
+    height: 16px;
 }
