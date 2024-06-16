@@ -58,7 +58,7 @@ body {
     height: 16px;
 }
 
-#nav-bar {
+#top-bar {
     display: flex;
     color: aliceblue;
     width: 100%;
@@ -76,14 +76,29 @@ body {
     flex-direction: column;
     border: solid 0.1px #3e3e3e;
 }
-#nav-bar p {
+#top-bar p {
     margin: 3px 0px;
 }
-#nav-bar img {
-    height: 16px;
+#top-bar img {
+    height: 20px;
 }
 #item {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+}
+#game {
+    padding: 40px;
+    background: #282828;
+    margin: 10px;
+    width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: solid 0.1px #3e3e3e;
+}
+#game img {
+    height: 160px;
 }
