@@ -21,6 +21,7 @@
     <div id="user-info">
         <img src="sources/icon.png" alt="icon">
         <p id="user">username</p>
+        <p id="referral">Referral Link: <a id="referral-link" href="#">Loading...</a></p>
     </div>
         <button id="wallet"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
     </div>
@@ -39,8 +40,12 @@
             console.log("User data:", user); // Debugging: log user data
             if (user) {
                 document.getElementById('user').innerText = user.username || 'No Username';
+                const referralLink = `https://t.me/Methcoin_bot?start=${username}`;
+                document.getElementById('referral-link').href = referralLink;
+                document.getElementById('referral-link').innerText = referralLink;
             } else {
                 document.getElementById('user').innerText = 'No User Data';
+                document.getElementById('referral-link').innerText = 'No Referral Link';
             }
         }
 
