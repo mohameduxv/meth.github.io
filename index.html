@@ -32,16 +32,18 @@
 
 
     <script>
-        // Wait for the Telegram Web App to initialize
-        Telegram.WebApp.onEvent('init', function() {
+        // Function to update username
+        function updateUsername() {
             const user = Telegram.WebApp.initDataUnsafe.user;
             if (user) {
                 document.getElementById('user').innerText = user.username || 'No Username';
+            } else {
+                document.getElementById('user').innerText = 'No User Data';
             }
-        });
+        }
 
-        // Trigger the initialization
-        Telegram.WebApp.ready();
+        // Ensure the Web App is ready before accessing user data
+        Telegram.WebApp.ready(updateUsername);
     </script>
     
 </body>
