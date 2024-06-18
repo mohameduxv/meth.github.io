@@ -15,6 +15,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     </style>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script src="https://unpkg.com/@tonconnect/sdk@0.2.1/dist/index.umd.js"></script>
 </head>
 <body>
     <!---Info-bar--->
@@ -87,21 +88,26 @@
             updateUsername();
         });
     </script>
-    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script src="https://unpkg.com/@tonconnect/sdk@0.2.1/dist/index.umd.js"></script>
     <script>
         // Function to initialize the Telegram Web App
         function initTelegramWebApp() {
             const tg = window.Telegram.WebApp;
-            
+
+            // Initialize TON Wallet SDK
+            const TonConnect = TonConnect.TonConnect;
+            const connector = new TonConnect();
+
             // Example action when the button is clicked
             document.getElementById('connect-wallet-button').addEventListener('click', async function() {
                 try {
-                    if (window.ethereum) {
-                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        tg.sendData(JSON.stringify({ event: 'wallet_connected', accounts }));
-                        alert('Wallet connected: ' + accounts[0]);
+                    const tonWallet = await connector.connect();
+                    if (tonWallet) {
+                        const walletAddress = tonWallet.address;
+                        tg.sendData(JSON.stringify({ event: 'wallet_connected', address: walletAddress }));
+                        alert('Wallet connected: ' + walletAddress);
                     } else {
-                        alert('MetaMask is not installed.');
+                        alert('Failed to connect to TON wallet.');
                     }
                 } catch (error) {
                     console.error('Error connecting to wallet:', error);
