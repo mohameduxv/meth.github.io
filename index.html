@@ -23,7 +23,7 @@
         <img src="sources/icon.png" alt="icon">
         <p id="user">username</p>
     </div>
-        <button id="wallet"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
+        <button id="connect-wallet-button"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
     </div>
     <!---top-bar--->
     <div id="top-bar">
@@ -85,6 +85,37 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log("DOM fully loaded and parsed"); // Debugging: log when DOM is loaded
             updateUsername();
+        });
+    </script>
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script>
+        // Function to initialize the Telegram Web App
+        function initTelegramWebApp() {
+            const tg = window.Telegram.WebApp;
+            
+            // Example action when the button is clicked
+            document.getElementById('connect-wallet-button').addEventListener('click', async function() {
+                try {
+                    if (window.ethereum) {
+                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        tg.sendData(JSON.stringify({ event: 'wallet_connected', accounts }));
+                        alert('Wallet connected: ' + accounts[0]);
+                    } else {
+                        alert('MetaMask is not installed.');
+                    }
+                } catch (error) {
+                    console.error('Error connecting to wallet:', error);
+                }
+            });
+
+            // Optionally configure your Telegram Web App
+            tg.MainButton.setText('Connect to Wallet');
+            tg.MainButton.show();
+        }
+
+        // Initialize the Telegram Web App when the document is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initTelegramWebApp();
         });
     </script>
     
