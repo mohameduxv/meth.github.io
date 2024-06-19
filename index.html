@@ -116,7 +116,7 @@
         </div>
         <div id="referral">
                 <p>You invited : 0</p>
-                <div id="referral-link"><p id="ref-link" style="margin: 0px; width: -webkit-fill-available;">https://t.me/</p><i class="fa-solid fa-copy" style="color: #ffffff;"></i></div>
+                <div id="referral-link"><p id="ref-link" style="margin: 0px; width: -webkit-fill-available;" onclick="Copy()">https://t.me/</p><i class="fa-solid fa-copy" style="color: #ffffff;"></i></div>
         </div>
      </div>
 
@@ -138,7 +138,7 @@
             if (user) {
                 document.getElementById('user').innerText = user.username || 'No Username';
                 document.getElementById('username').innerText = user.username || 'No Username';
-                document.getElementById('ref-link').innerText = user.id || 'No Username';
+                document.getElementById('ref-link').innerText = 'https://t.me/Methcoin_bot?start=' + user.id || 'No Username';
             } else {
                 document.getElementById('user').innerText = 'No User Data';
                 document.getElementById('username').innerText = 'No User Data';
