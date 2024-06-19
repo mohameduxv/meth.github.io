@@ -138,17 +138,10 @@
             if (user) {
                 document.getElementById('user').innerText = user.username || 'No Username';
                 document.getElementById('username').innerText = user.username || 'No Username';
+                document.getElementById('referral-link').innerText = user.id || 'No Username';
             } else {
                 document.getElementById('user').innerText = 'No User Data';
                 document.getElementById('username').innerText = 'No User Data';
-            }
-        }
-        function updateID() {
-            const user = Telegram.WebApp.initDataUnsafe.user;
-            console.log("User data:", user); // Debugging: log user data
-            if (user) {
-                document.getElementById('referral-link').innerText = 'https://t.me/' + user.id || 'No Username';
-            } else {
                 document.getElementById('referral-link').innerText = 'No User Data';
             }
         }
@@ -157,7 +150,6 @@
         Telegram.WebApp.ready(() => {
             console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
             updateUsername();
-            updateID();
         });
 
         // Additional event listener to ensure the script runs when the DOM is fully loaded
