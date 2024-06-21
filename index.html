@@ -176,12 +176,12 @@
             Telegram.WebApp.expand();
             Telegram.WebApp.MainButton.hide();
             Telegram.WebApp.setHeaderColor("#000000");
-            Telegram.WebApp.BackButton.show();
             Telegram.WebApp.BackButton.onClick(function() {
                 hideEarn();
                 hideMint();
                 hideInvite();
                 hideProfilePopup();
+                Telegram.WebApp.BackButton.hide();
             });
         });
         
