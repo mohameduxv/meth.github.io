@@ -176,11 +176,10 @@
         Telegram.WebApp.ready(() => {
     console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
     updateUsername();
-    // Ensuring expand is called after the WebApp is fully initialized
-    setTimeout(() => {
-        Telegram.WebApp.expand();
-        console.log("Telegram WebApp expanded"); // Debugging: log when WebApp is expanded
-    }, 100); // Delay can help ensure proper initialization
+    const tele = window.Telegram.WebApp; //Initializes the TELEGRAM BOT and
+  //Gets the user's Telegram ID from the Telegram API
+
+tele.expand(); //Expands the app on the users' phone to 100% height
 });
 
 
