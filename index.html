@@ -176,6 +176,7 @@
         Telegram.WebApp.ready(() => {
             console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
             updateUsername();
+            Telegram.WebApp.expand();
         });
 
         // Additional event listener to ensure the script runs when the DOM is fully loaded
