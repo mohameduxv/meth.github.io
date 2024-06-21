@@ -204,7 +204,7 @@ function updateProgressLine() {
 function copyText() {
     const copyText = document.getElementById('ref-link').innerText;
     navigator.clipboard.writeText(copyText);
-    alert("Copied the text: " + copyText);
+    Telegram.WebApp.showAlert("copied");
 }
 
 // mint page
