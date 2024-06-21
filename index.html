@@ -188,6 +188,10 @@ tele.expand(); //Expands the app on the users' phone to 100% height
             console.log("DOM fully loaded and parsed"); // Debugging: log when DOM is loaded
             updateUsername();
         });
+        document.addEventListener("DOMContentLoaded", function() {
+            Telegram.WebApp.ready();
+            Telegram.WebApp.expand();
+        });
     </script>
     <script src="style/script.js"></script>
     
