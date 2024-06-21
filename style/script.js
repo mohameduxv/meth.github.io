@@ -182,6 +182,7 @@ ProfileButton.addEventListener('click', showProfilePopup);
 
 function showProfilePopup() {
     ProfilePopup.classList.add('show');
+    Telegram.WebApp.BackButton.show();
 }
 
 function hideProfilePopup() {
@@ -210,6 +211,7 @@ function copyText() {
 const Mint = document.getElementById('Mint-page');
 function showMint() {
     Mint.classList.add('show');
+    Telegram.WebApp.BackButton.show();
 }
 function hideMint() {
     Mint.classList.remove('show');
@@ -220,6 +222,7 @@ function hideMint() {
 const Earn = document.getElementById('Earn-page');
 function showEarn() {
     Earn.classList.add('show');
+    Telegram.WebApp.BackButton.show();
 }
 function hideEarn() {
     Earn.classList.remove('show');
@@ -230,6 +233,7 @@ function hideEarn() {
 const Invite = document.getElementById('Invite-page');
 function showInvite() {
     Invite.classList.add('show');
+    Telegram.WebApp.BackButton.show();
 }
 function hideInvite() {
     Invite.classList.remove('show');
