@@ -89,7 +89,7 @@
     <!-- Offline Earnings Popup -->
     <div id="offline-earnings-popup" class="popup">
         <div class="popup-content">
-            <i class="fa-solid fa-gift fa-bounce fa-2xl" style="color: #C1FF72;"></i>
+            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Confetti%20Ball.webp" alt="Confetti Ball" width="100" height="100" />
             <p style="color: #C1FF72; margin: 16px; font-size: larger;">Great!</p>
             <p>You've earned <span id="offline-carrots">0</span> coin while you weren't here!</p>
             <button id="claim-offline">Claim</button>
@@ -175,7 +175,6 @@
             Telegram.WebApp.expand();
             Telegram.WebApp.MainButton.hide();
             Telegram.WebApp.setHeaderColor("#000000");
-            Telegram.WebApp.BackButton.show();
             
             Telegram.WebApp.BackButton.onClick(function() {
                 hideEarn();
@@ -183,7 +182,6 @@
                 hideInvite();
             });
         });
-        
         
 
         // Ensure the Web App is ready before accessing user data
