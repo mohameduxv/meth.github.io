@@ -175,7 +175,16 @@
             Telegram.WebApp.expand();
             Telegram.WebApp.MainButton.hide();
             Telegram.WebApp.setHeaderColor("#000000");
+            Telegram.WebApp.BackButton.show();
+            
+            Telegram.WebApp.BackButton.onClick(function() {
+                alert('Back button clicked!');
+                hideEarn();
+                hideMint();
+                hideInvite();
+            });
         });
+        
         
 
         // Ensure the Web App is ready before accessing user data
