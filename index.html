@@ -27,7 +27,7 @@
         <img src="sources/icon.png" alt="icon">
         <p id="user">username</p>
     </div>
-        <button id="wallet"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
+        <button id="ton-connect"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
     </div>
     <!---top-bar--->
     <div id="top-bar">
@@ -198,25 +198,27 @@
             updateUsername();
         });
     </script>
-    <script src="https://cdn.tonapi.io/ton.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <script>
-        document.getElementById('wallet').addEventListener('click', async () => {
-    try {
-        // Initialize the TON Wallet SDK
-        const wallet = new TonWallet();
-        
-        // Connect to the wallet
-        const address = await wallet.connect();
-        
-        // Handle successful connection
-        console.log('Connected to wallet:', address);
-        // You can now use the address in your app
-    } catch (error) {
-        console.error('Failed to connect to TON Wallet:', error);
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://mohameduxv.github.io/meth.github.io/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+</script>
+    <script>
+    async function connectToWallet() {
+        try {
+            const connectedWallet = await tonConnectUI.connectWallet();
+            console.log(connectedWallet);
+        } catch (error) {
+            console.error("Error connecting to wallet:", error);
+        }
     }
-});
 
-    </script>
+    document.getElementById('ton-connect').addEventListener('click', connectToWallet);
+</script>
+
+
     <script src="style/script.js"></script>
     
 </body>
