@@ -198,6 +198,25 @@
             updateUsername();
         });
     </script>
+    <script src="https://cdn.tonapi.io/ton.js"></script>
+    <script>
+        document.getElementById('wallet').addEventListener('click', async () => {
+    try {
+        // Initialize the TON Wallet SDK
+        const wallet = new TonWallet();
+        
+        // Connect to the wallet
+        const address = await wallet.connect();
+        
+        // Handle successful connection
+        console.log('Connected to wallet:', address);
+        // You can now use the address in your app
+    } catch (error) {
+        console.error('Failed to connect to TON Wallet:', error);
+    }
+});
+
+    </script>
     <script src="style/script.js"></script>
     
 </body>
