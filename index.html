@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="MobileOptimized" content="176"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="robots" content="noindex,nofollow"/>
+    <title>Yetie Land</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://kit.fontawesome.com/fc419d396f.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    </style>
+    
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!---Info-bar--->
+    <div id="info">
+    <div id="user-info">
+        <img src="sources/icon.png" alt="icon">
+        <p id="user">username</p>
+    </div>
+        <button id="wallet"><img src="sources/wallet.png" alt="wallet"><p>connect wallet</p></button>
+    </div>
+    <!---top-bar--->
+    <div id="top-bar">
+        <div id="balance">
+            <p style="font-size: small; color: #969696;">Balance</p>
+            <div id="item">
+            <img src="sources/coin.png" alt="icon" style="margin-left: 0px;">
+            <p id="balance-text" style="color: #C1FF72;" class="number">10000</p>
+            
+            </div>
+        </div>
+        <div id="Profit-per-tap">
+            <p style="font-size: small; color: #969696;">Profit per tap</p>
+            <p id="Profit-per-tap-text" class="number">+1</p>
+        </div>
+        <div id="Profit-per-hour">
+            <p style="font-size: small; color: #969696;">Profit per hour</p>
+            <div id="item">
+            <p id="Profit-per-hour-text" class="number">+10000</p>
+            </div>
+        </div>
+    </div>
+    <!---Game--->
+    <div id="game">
+        <div id="game-container">
+            <img src="sources/coin.png" alt="click" id="click-img">
+        </div>
+    </div>
+    <!---level--->
+    <div id="level">
+        <div id="progsess">
+            <div id="line">
+            </div>
+        </div>
+        <div id="level-text">
+            <p id="mylevel"  style="color: #e7e7e7; width: -webkit-fill-available;">master</p>
+            <p style="color: #aeaeae; margin-right: 5px;">level </p>
+            <p style="color: #e7e7e7;" id="txt">1/10</p>
+        </div>
+    </div>
+    <!---nav-bar--->
+    <div id="nav-bar">
+        <div id="home">
+            <span class="material-symbols-outlined" style="color: #9847fb;">local_fire_department</span>
+            <p style="color: #9847fb;">home</p>
+        </div>
+        <div id="mint" onclick="showMint()">
+            <span class="material-symbols-outlined">nest_eco_leaf</span>
+            <p>mint</p>
+        </div>
+        <div id="earn" onclick="showEarn()">
+            <span class="material-symbols-outlined">editor_choice</span>
+            <p>earn</p>
+        </div>
+        <div id="invite" onclick="showInvite()">
+            <span class="material-symbols-outlined">group</span>
+            <p>invite</p>
+        </div>
+    </div>
+    <!-- Offline Earnings Popup -->
+    <div id="offline-earnings-popup" class="popup">
+        <div class="popup-content">
+            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Confetti%20Ball.webp" alt="Confetti Ball" width="100" height="100" />
+            <p style="color: #C1FF72; margin: 16px; font-size: larger;">Great!</p>
+            <p>You've earned <span id="offline-carrots">0</span> coin while you weren't here!</p>
+            <button id="claim-offline">Claim</button>
+        </div>
+    </div>
+    <!-- Profile -->
+     <div id="profile" class="profile">
+        <div style="margin:0px 10px 10px 10px;"><p style="    width: -webkit-fill-available;
+            text-align-last: center;
+            font-size: x-large; margin: 0px; font-weight: bold;">Profile</p></div>
+        <div id="my-profile">
+        <img src="sources/icon.png" alt="profile">
+        <p id="username" style="font-weight: bold;">username</p>
+        </div>
+        <div style="display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: space-between;">
+            <div id="border"><img src="sources/coin.png" alt="coin" style="height: 16px;"><p id="balance-txt" ></p></div>
+            <div id="border"><p id="level-txt">level : 1</p></div>
+            
+
+        </div>
+        <div id="referral">
+                <p style="font-weight: bold;">Invite friends. Earn $WHIZ</p>
+                <div id="referral-link" onclick="copyText()"><p id="ref-link" style="margin: 0px; width: -webkit-fill-available;">https://t.me/</p><i class="fa-solid fa-copy" style="color: #ffffff;"></i></div>
+        </div>
+     </div>
+    
+
+     <!--Mint-->
+    <div id="Mint-page" class="mint">
+        <div id="mint-title"><p>Farming</p></div>
+        <div id="discreption">Farm, Earn, Collect.</div>
+        <p>Upgrads</p>
+        <div id="Items">
+            <div id="auto">
+                <div id="card">
+                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Money%20Bag.webp" alt="Money Bag" width="25" height="25" />
+                    <div id="info-card">
+                        <p style="font-weight: bold;">Auto Earning</p>
+                        <p style="color: #6d6d6d;">Auto Earn profits</p>
+                        <p style="color: #6d6d6d;" id="Profit-per-hour-text2">Level : 1</p>
+                    </div>
+                </div>
+                <div id="upgrad">
+                    <p id="upgrade-text1" style="text-align: center;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;">1000 <img src="sources/coin.png" alt=""></p>
+                    <button id="upgrad1" onclick="upgradit1()">Upgrad</button>
+                </div>
+                
+                
+            </div>
+
+            <div id="auto">
+                <div id="card">
+                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Gem%20Stone.webp" alt="Gem Stone" width="25" height="25" />
+                    <div id="info-card">
+                        <p style="font-weight: bold;">Profit per tap</p>
+                        <p style="color: #6d6d6d;">Profit per tap</p>
+                        <p style="color: #6d6d6d;" id="Profit-per-tap-text2">7$WHIZ</p>
+                    </div>
+                </div>
+                <div id="upgrad">
+                    <p id="upgrade-text2" style="text-align: center;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;">1000 <img src="sources/coin.png" alt=""></p>
+                    <button id="upgrad2" onclick="upgradit2()">Upgrad</button>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+     <!--Earn-->
+     <div id="Earn-page" class="earn">
+        <div id="earn-title"><p>Earn</p></div>
+        <div id="discreption">Do taks, Earn $WHIZ.</div>
+        <div id="Items">
+        </div>
+    </div>
+
+
+
+
+     <!--Invite-->
+     <div id="Invite-page" class="invite">
+        <div id="invite-title"><p>Invite</p></div>
+        <div id="discreption">Reff frens, Earn $WHIZ.</div>
+        <div id="Items">
+        </div>
+    </div>
+            
+        
+
+
+
+
+
+
+    
+
+
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // Function to update username
+        function updateUsername() {
+            const user = Telegram.WebApp.initDataUnsafe.user;
+            console.log("User data:", user); // Debugging: log user data
+            if (user) {
+                document.getElementById('user').innerText = user.username || 'No Username';
+                document.getElementById('username').innerText = user.username || 'No Username';
+                document.getElementById('ref-link').innerText = 'https://t.me/Methcoin_bot?start=' + user.id || 'No Username';
+                const reff = user.id
+            } else {
+                document.getElementById('user').innerText = 'No User Data';
+                document.getElementById('username').innerText = 'No User Data';
+                document.getElementById('ref-link').innerText = 'No User Data';
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            Telegram.WebApp.ready();
+            Telegram.WebApp.expand();
+            Telegram.WebApp.MainButton.hide();
+            Telegram.WebApp.setHeaderColor("#000000");
+            Telegram.WebApp.BackButton.onClick(function() {
+                hideEarn();
+                hideMint();
+                hideInvite();
+                hideProfilePopup();
+                Telegram.WebApp.BackButton.show();
+            });
+        });
+        
+
+        // Ensure the Web App is ready before accessing user data
+        Telegram.WebApp.ready(() => {
+            console.log("Telegram WebApp is ready"); // Debugging: log when WebApp is ready
+            updateUsername();
+        });
+
+        // Additional event listener to ensure the script runs when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM fully loaded and parsed"); // Debugging: log when DOM is loaded
+            updateUsername();
+        });
+    </script>
+    <script src="style/script.js"></script>
+    
+</body>
+</html>
